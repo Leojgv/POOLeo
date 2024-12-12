@@ -20,6 +20,6 @@ Menú de JSONplaceholder
             if post:
                 print(f"\nPost ID: {post.id}\nUserID: {post.userId}\nTítulo: {post.title}\nCuerpo: {post.body}")
         
-        elif option == 3:
+        elif option == 2:
             print("Saliendo del programa...")
             break
