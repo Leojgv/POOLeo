@@ -23,5 +23,3 @@ def leer_post_por_id(post_id):
         print(f"Error: {e}")
     except KeyError:
         print("El post no fue encontrado.")
-    
-
