@@ -19,33 +19,33 @@ Menú de JsonPlaceholder:
 
         # User
         if option == 1:
-            user = Servicios.ConsumirAPI.view_user()
+            user = Servicios.InteractAPI.view_user()
             if user:
                 answer = input("\n¿Desea Guardar el Usuario en la Base de Datos? (si/no): ")
                 if answer == 'si':
-                    Datos.db_conection.save_user_DB(user.userId, user.name, user.username, user.email, user.phone)
+                    Datos.conexion_db.save_user_DB(user.userId, user.name, user.username, user.email, user.phone)
                 elif answer == 'no':
                     print("\nEl Usuario no se ha guardado en la DB\n")
                     continue
 
         # Post
         elif option == 2:
-            post = Servicios.ConsumirAPI.read_post()
+            post = Servicios.InteractAPI.read_post()
             if post:
                 answer = input("\n¿Desea Guardar el post en la Base de Datos? (si/no): ")
                 if answer == 'si':
-                    Datos.db_conection.save_post_DB(post.id, post.title, post.body)
+                    Datos.conexion_db.save_post_DB(post.id, post.title, post.body)
                 elif answer == 'no':
                     print("\nEl Post no se ha guardado en la DB\n")
                     continue
 
         # Tarea
         elif option == 3:
-            todo = Servicios.ConsumirAPI.view_todos()
+            todo = Servicios.InteractAPI.view_todos()
             if todo:
                 answer = input("\n¿Desea Guardar la Tarea en la Base de Datos? (si/no): ")
                 if answer == 'si':
-                    Datos.db_conection.save_todo(todo.Id, todo.title, todo.completed)
+                    Datos.conexion_db.save_todo(todo.Id, todo.title, todo.completed)
                 elif answer == 'no':
                     print("\nLa Tarea no se ha guardado en la DB\n")
 
@@ -74,23 +74,23 @@ Menú de la Base de Datos:
 
         # Ver Users
         if option == 1:
-            Datos.db_conection.view_user_DB()
+            Datos.conexion_db.view_user_DB()
             continue
         # Ver Posts
         if option == 2:
-            Datos.db_conection.view_post_DB()
+            Datos.conexion_db.view_post_DB()
             continue
         # Ver Tareas
         if option == 3:
-            Datos.db_conection.view_todo_DB()
+            Datos.conexion_db.view_todo_DB()
             continue
         # Asignar Post
         if option == 4:
-            Datos.db_conection.asign_post()
+            Datos.conexion_db.asign_post()
             continue
         # Asignar Tarea
         if option == 5:
-            Datos.db_conection.asign_todo()
+            Datos.conexion_db.asign_todo()
             continue
         # Salir
         if option == 0:
