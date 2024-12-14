@@ -1,4 +1,4 @@
-import Servicios.ConsumirAPI, Datos.conexion_db as DAL.db_conection
+import Servicios.InteractAPI, Datos.conexion_db
 
 # Menú de jsonplaceholder
 def menu_json():
