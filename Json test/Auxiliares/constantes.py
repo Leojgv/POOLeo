@@ -1,11 +1,11 @@
-#Configuración DB
-host = "localhost"
-user = "gestion_empleados"
-password = "a1b2c3d4e5"
-database = "gestion_empleados"
+URL_JSONPLACEHOLDER = "https://jsonplaceholder.typicode.com/"
 
-#Acciones DB
-obtener = "SELECT"
-insertar = "INSERT"
-actualizar = "UPDATE"
-borrar = "Deshabilitar"
+URL_Post = "https://jsonplaceholder.typicode.com/posts"
+URL_Todo = "https://jsonplaceholder.typicode.com/todos"
+URL_Users = "https://jsonplaceholder.typicode.com/users"
+
+# DB
+db_host = "localhost"
+db_user = "root"
+db_password = ""
+db_database = "jsonplaceholder"
