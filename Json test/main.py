@@ -98,18 +98,34 @@ Menú de la Base de Datos:
             break
 
 # Ejecutar el programa
-if __name__ == "__main__":
-    while True:
-        print("""
+def mostrar_menu_principal():
+    """Muestra el menú principal y devuelve la opción seleccionada."""
+    print("""
 Menú del Programa:
 1. Menú de JsonPlaceholder.
 2. Menú de la Base de Datos. 
 0. Salir""")
-        option = int(input("Ingrese una opción: "))
-        if option == 1:
-            menu_json()
-        elif option == 2:
-            menu_db()
-        elif option == 0:
-            print("Saliendo del programa...")
-            break
+    return int(input("Ingrese una opción: "))
+
+def ejecutar_opcion(opcion):
+    """Ejecuta la opción seleccionada del menú."""
+    if opcion == 1:
+        menu_json()
+    elif opcion == 2:
+        menu_db()
+    elif opcion == 0:
+        print("Saliendo del programa...")
+        return False
+    else:
+        print("Opción no válida.")
+    return True
+
+def main():
+    """Función principal que ejecuta el programa."""
+    continuar = True
+    while continuar:
+        opcion = mostrar_menu_principal()
+        continuar = ejecutar_opcion(opcion)
+
+if __name__ == "__main__":
+    main()
