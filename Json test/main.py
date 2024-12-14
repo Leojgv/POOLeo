@@ -1,4 +1,6 @@
 import Servicios.InteractAPI, Datos.conexion_db
+import Servicios.servicio_encriptacion
+from Servicios.servicio_encriptacion import Main
 
 # Menú de jsonplaceholder
 def menu_json():
@@ -64,6 +66,7 @@ Menú de la Base de Datos:
 3. Mostrar Tareas
 4. Asignar Post a un Usuario
 5. Asignar Tarea a un Usuario
+6. Encriptar Contraseña
 0. Salir de este menú
 """)
         try:
@@ -92,12 +95,13 @@ Menú de la Base de Datos:
         if option == 5:
             Datos.conexion_db.asign_todo()
             continue
-        # Salir
+        if option == 6:
+            
         if option == 0:
             print("Volviendo al Menú principal...")
             break
 
-# Ejecutar el programa
+#Menu Principal 
 def mostrar_menu_principal():
     """Muestra el menú principal y devuelve la opción seleccionada."""
     print("""
