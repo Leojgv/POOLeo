@@ -1,3 +1,4 @@
+import Servicios.servicio_encriptacion
 import mysql.connector
 from prettytable import from_db_cursor
 from Auxiliares.constantes import db_user, db_password, db_host, db_database
@@ -125,3 +126,17 @@ def view_todo_DB():
             print(tabla)
         except:
             print("\nNo hay ToDos registrados en la DB\n")
+
+def guardar_contrasena_en_db(usuario_id, contrasena):
+    hashed_contrasena = Servicios.encriptar_contrasena(contrasena)
+    
+    cnx = conexion_db()
+    if cnx:
+        cursor = cnx.cursor()
+        query = "UPDATE Usuarios SET contrasena = %s WHERE id = %s;"
+        cursor.execute(query, (hashed_contrasena, usuario_id))
+        cnx.commit()
+        cursor.close()
+        print("Contraseña guardada correctamente en la base de datos.")
+    else:
+        print("No se pudo conectar a la base de datos.")
