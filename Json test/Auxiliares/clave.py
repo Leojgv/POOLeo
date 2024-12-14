@@ -1,1 +1,0 @@
-clave_guardada = b'VhQvzYDXwMRtuniR7NN-uJDEwThJ9NqiGCehKORnx8Y='
