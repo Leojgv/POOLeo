@@ -7,7 +7,7 @@ def menu_json():
     """Menú interactivo para utilizar las funciones en jsonplaceholder"""
     while True:
         print(""" 
-Menú de JsonPlaceholder:
+Menú JsonPlaceholder:
 1. Consultar Datos de Usuario
 2. Consultar Post
 3. Consultar Tarea
@@ -60,7 +60,7 @@ def menu_db():
     """Menú interacctivo para utilizar las funciones de la DB"""
     while True:
         print("""
-Menú de la Base de Datos:
+Menú Base de Datos:
 1. Mostrar Usuarios
 2. Mostrar Posts
 3. Mostrar Tareas
@@ -107,10 +107,10 @@ def mostrar_menu_principal():
     """Muestra el menú principal y devuelve la opción seleccionada."""
     print("""
 Menú del Programa:
-1. Menú de JsonPlaceholder.
-2. Menú de la Base de Datos. 
-3. Menú de Encriptacion.
-4. Menú de Serper.
+1. Menú JsonPlaceholder.
+2. Menú Base de Datos. 
+3. Encriptacion.
+4. Serper.
 0. Salir""")
     return int(input("Ingrese una opción: "))
 
