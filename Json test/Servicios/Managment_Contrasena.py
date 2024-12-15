@@ -19,11 +19,11 @@ def decrypt_password(encrypted_password, key):
 
 def password_management():
     # Solicitar la contraseña al usuario
-    password = input("\nIngrese la contraseña que desea encriptar: ")
+    password = input("\nIngrese la contraseña que desea encriptar (Poner 'salir' para volver al menu): ")
 
     if password.lower() == 'salir':
-            print("Volviendo al menú principal...")
-            return  # Salir de la función y volver al menú principal
+        print("Volviendo al menú principal...")
+        return  # Salir de la función y volver al menú principal
 
     print(f"Contraseña ingresada: {password}")
 
