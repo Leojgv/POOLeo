@@ -1,7 +1,7 @@
-import Servicios.servicio_encriptacion
 import mysql.connector
 from prettytable import from_db_cursor
 from Auxiliares.constantes import db_user, db_password, db_host, db_database
+from Servicios.Managment_Contrasena import decrypt_password
 
 # Conexion a DB
 def conexion_db():
@@ -127,16 +127,44 @@ def view_todo_DB():
         except:
             print("\nNo hay ToDos registrados en la DB\n")
 
-def guardar_contrasena_en_db(usuario_id, contrasena):
-    hashed_contrasena = Servicios.encriptar_contrasena(contrasena)
-    
+def save_encrypted_password(user_id, encrypted_password, encryption_key):
+    """Guarda la contraseña encriptada en la base de datos"""
     cnx = conexion_db()
     if cnx:
         cursor = cnx.cursor()
-        query = "UPDATE Usuarios SET contrasena = %s WHERE id = %s;"
-        cursor.execute(query, (hashed_contrasena, usuario_id))
+        # Verificar si el user_id existe
+        cursor.execute("SELECT id_user FROM User WHERE id_user = %s;", (user_id,))
+        if cursor.fetchone() is None:
+            print("\nEl usuario ingresado no existe en la DB. No se puede guardar la contraseña.")
+            cursor.close()
+            return  # Salir de la función si el usuario no existe
+
+        # Si el usuario existe, proceder a guardar la contraseña
+        query = "INSERT INTO UserPasswords (user_id, encrypted_password, encryption_key) VALUES (%s, %s, %s);"
+        cursor.execute(query, (user_id, encrypted_password, encryption_key))
         cnx.commit()
         cursor.close()
-        print("Contraseña guardada correctamente en la base de datos.")
-    else:
-        print("No se pudo conectar a la base de datos.")
+        print("\nContraseña encriptada guardada en la DB correctamente\n")
+
+def get_encrypted_password(user_id):
+    """Recupera la contraseña encriptada y la clave de encriptación de la base de datos"""
+    cnx = conexion_db()
+    if cnx:
+        cursor = cnx.cursor()
+        query = "SELECT encrypted_password, encryption_key FROM UserPasswords WHERE user_id = %s;"
+        cursor.execute(query, (user_id,))
+        result = cursor.fetchone()
+        cursor.close()
+        if result:
+            return result  # Devuelve una tupla (encrypted_password, encryption_key)
+        else:
+            print("No se encontró la contraseña para el usuario especificado.")
+            return None
+
+def decrypt_password_from_db(user_id):
+    """Desencripta la contraseña almacenada en la base de datos y la muestra en el terminal"""
+    data = get_encrypted_password(user_id)
+    if data:
+        encrypted_password, encryption_key = data
+        decrypted_password = decrypt_password(encrypted_password.encode(), encryption_key.encode())
+        print(f"La contraseña desencriptada para el usuario {user_id} es: {decrypted_password}")
