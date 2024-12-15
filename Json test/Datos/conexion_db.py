@@ -156,7 +156,7 @@ def get_encrypted_password(user_id):
         result = cursor.fetchone()
         cursor.close()
         if result:
-            return result  # Devuelve una tupla (encrypted_password, encryption_key)
+            return result
         else:
             print("No se encontró la contraseña para el usuario especificado.")
             return None
