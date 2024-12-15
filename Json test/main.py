@@ -1,7 +1,5 @@
-import Servicios.InteractAPI, Datos.conexion_db
-import Servicios.servicio_encriptacion
-from Servicios.servicio_encriptacion import Main
-
+import Servicios.InteractAPI, Datos.conexion_db, Servicios.Managment_Contrasena
+import Datos.conexion_db
 # Menú de jsonplaceholder
 def menu_json():
     """Menú interactivo para utilizar las funciones en jsonplaceholder"""
@@ -66,7 +64,7 @@ Menú de la Base de Datos:
 3. Mostrar Tareas
 4. Asignar Post a un Usuario
 5. Asignar Tarea a un Usuario
-6. Encriptar Contraseña
+6. Desencriptar Contraseña
 0. Salir de este menú
 """)
         try:
@@ -80,24 +78,25 @@ Menú de la Base de Datos:
             Datos.conexion_db.view_user_DB()
             continue
         # Ver Posts
-        if option == 2:
+        elif option == 2:
             Datos.conexion_db.view_post_DB()
             continue
         # Ver Tareas
-        if option == 3:
+        elif option == 3:
             Datos.conexion_db.view_todo_DB()
             continue
         # Asignar Post
-        if option == 4:
+        elif option == 4:
             Datos.conexion_db.asign_post()
             continue
         # Asignar Tarea
-        if option == 5:
+        elif option == 5:
             Datos.conexion_db.asign_todo()
             continue
-        if option == 6:
-            
-        if option == 0:
+        elif option == 6:
+            user_id = input("Ingrese el ID del usuario para desencriptar: ")
+            Datos.conexion_db.decrypt_password_from_db(user_id)
+        elif option == 0:
             print("Volviendo al Menú principal...")
             break
 
@@ -108,6 +107,8 @@ def mostrar_menu_principal():
 Menú del Programa:
 1. Menú de JsonPlaceholder.
 2. Menú de la Base de Datos. 
+3. Menú de Encriptacion.
+4. Menú de Serper.
 0. Salir""")
     return int(input("Ingrese una opción: "))
 
@@ -117,11 +118,11 @@ def ejecutar_opcion(opcion):
         menu_json()
     elif opcion == 2:
         menu_db()
+    elif opcion == 3:
+        Servicios.Managment_Contrasena.password_management()
     elif opcion == 0:
         print("Saliendo del programa...")
         return False
-    else:
-        print("Opción no válida.")
     return True
 
 def main():
