@@ -168,3 +168,33 @@ def decrypt_password_from_db(user_id):
         encrypted_password, encryption_key = data
         decrypted_password = decrypt_password(encrypted_password.encode(), encryption_key.encode())
         print(f"La contraseña desencriptada para el usuario {user_id} es: {decrypted_password}")
+
+def insertar_datos(userId, name, username, email, phone):
+    """Inserta un nuevo usuario en la base de datos."""
+    cnx = conexion_db()
+    if cnx:
+        cursor = cnx.cursor()
+        query = "INSERT INTO User (id_user, name, username, user_email, user_phone) VALUES (%s, %s, %s, %s, %s);"
+        cursor.execute(query, (userId, name, username, email, phone))
+        cnx.commit()
+        cursor.close()
+        print("Usuario insertado correctamente en la base de datos.")
+
+def obtener_datos():
+    """Obtiene todos los usuarios de la base de datos."""
+    cnx = conexion_db()
+    datos = []
+    if cnx:
+        cursor = cnx.cursor()
+        query = "SELECT * FROM User;"
+        cursor.execute(query)
+        for (id_user, name, username, user_email, user_phone) in cursor:
+            datos.append({
+                'id_user': id_user,
+                'name': name,
+                'username': username,
+                'user_email': user_email,
+                'user_phone': user_phone
+            })
+        cursor.close()
+    return datos

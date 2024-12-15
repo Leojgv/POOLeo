@@ -1,5 +1,7 @@
 import Servicios.InteractAPI, Datos.conexion_db, Servicios.Managment_Contrasena
 import Datos.conexion_db
+from Servicios.Servicio_serper import main as Servicio_serper
+import Servicios.Servicio_serper
 # Menú de jsonplaceholder
 def menu_json():
     """Menú interactivo para utilizar las funciones en jsonplaceholder"""
@@ -120,6 +122,8 @@ def ejecutar_opcion(opcion):
         menu_db()
     elif opcion == 3:
         Servicios.Managment_Contrasena.password_management()
+    elif opcion == 4:
+        Servicios.Servicio_serper.main()
     elif opcion == 0:
         print("Saliendo del programa...")
         return False
