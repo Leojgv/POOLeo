@@ -35,9 +35,20 @@ def consultar_datos_en_db():
     print("Datos obtenidos de la base de datos:", datos)
 
 def main():
-    query = input("Ingresa el término de búsqueda para la API SERPER: ")
-    api_key = input("Ingresa tu API Key: ")
-    
+    while True:
+        query = input("Ingresa el término de búsqueda para la API SERPER (o escribe 'salir' para volver atrás): ")
+        if query.lower() == 'salir':
+            print("Volviendo al menú anterior...")
+            break  # Salir del bucle y volver atrás
+
+        api_key = "8ae71d320907edfe69633c0f100b59060cf8bc80"
+        
+        # Paso 1: Buscar en la API SERPER
+        try:
+            resultados_serper = buscar_con_api_serper(query, api_key)
+            print("Resultados de la búsqueda en SERPER:", resultados_serper)
+        except Exception as e:
+            print(f"Ocurrió un error: {e}")
     # Paso 1: Buscar en la API SERPER
     resultados_serper = buscar_con_api_serper(query, api_key)
     print("Resultados de la búsqueda en SERPER:", resultados_serper)
