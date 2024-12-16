@@ -238,10 +238,6 @@ def view_results_search():
                         Resultados r ON b.id_search = r.Busqueda_id_search;"""
         cursor.execute(query)
         try:
-            tabla = PrettyTable()
-            tabla.field_names = ["Búsqueda", "Título", "URL", "Descripción"]
-            for row in cursor.fetchall():
-                tabla.add_row(row)
             tabla = from_db_cursor(cursor)
             print(tabla)
         except:
