@@ -2,7 +2,7 @@ import mysql.connector
 from prettytable import from_db_cursor
 from Auxiliares.constantes import db_user, db_password, db_host, db_database
 from Negocio.Managment_Contrasena import decrypt_password
-
+from prettytable import PrettyTable
 # Conexion a DB
 def conexion_db():
     try:
@@ -238,6 +238,10 @@ def view_results_search():
                         Resultados r ON b.id_search = r.Busqueda_id_search;"""
         cursor.execute(query)
         try:
+            tabla = PrettyTable()
+            tabla.field_names = ["Búsqueda", "Título", "URL", "Descripción"]
+            for row in cursor.fetchall():
+                tabla.add_row(row)
             tabla = from_db_cursor(cursor)
             print(tabla)
         except:
