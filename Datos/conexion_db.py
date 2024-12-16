@@ -1,7 +1,7 @@
 import mysql.connector
 from prettytable import from_db_cursor
 from Auxiliares.constantes import db_user, db_password, db_host, db_database
-from Servicios.Managment_Contrasena import decrypt_password
+from Negocio.Managment_Contrasena import decrypt_password
 
 # Conexion a DB
 def conexion_db():

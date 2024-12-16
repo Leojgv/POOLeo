@@ -1,4 +1,4 @@
-import Servicios.InteractAPI, Datos.conexion_db, Servicios.Managment_Contrasena
+import Servicios.InteractAPI, Datos.conexion_db, Negocio.Managment_Contrasena
 import Datos.conexion_db
 import Servicios.Servicio_serper
 import Servicios.serper
@@ -120,7 +120,7 @@ Menú Principal:
         elif option == 2:
             menu_db()
         elif option == 3:
-            Servicios.Managment_Contrasena.password_management()
+            Negocio.Managment_Contrasena.password_management()
         elif option == 4:
             Servicios.serper.menu_serper()
         elif option == 0:
