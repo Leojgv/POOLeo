@@ -1,6 +1,5 @@
 import Servicios.InteractAPI, Datos.conexion_db, Negocio.Managment_Contrasena
 import Datos.conexion_db
-import Servicios.Servicio_serper
 import Servicios.serper
 
 # Menú de jsonplaceholder
@@ -68,6 +67,7 @@ Menú Base de Datos:
 4. Asignar Post a un Usuario
 5. Asignar Tarea a un Usuario
 6. Desencriptar Contraseña
+7. Mostrar Resultados y Busqueda
 0. VOLVER AL MENU PRINCIPAL
 -----------------------------------------------""")
         try:
@@ -99,6 +99,8 @@ Menú Base de Datos:
         elif option == 6:
             user_id = input("Ingrese el ID del usuario para desencriptar: ")
             Datos.conexion_db.decrypt_password_from_db(user_id)
+        elif option == 7:
+            Datos.conexion_db.view_results_search()
         elif option == 0:
             print("Volviendo al Menú principal...")
             break

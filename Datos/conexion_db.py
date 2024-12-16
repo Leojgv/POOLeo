@@ -221,7 +221,7 @@ def guardar_resultado(busqueda_id, titulo, url, descripcion):
         cnx.commit()
         cursor.close()
 
-def view_search_DB():
+def view_results_search():
     """Muestra los resultados de búsqueda en el terminal"""
     cnx = conexion_db()
     if cnx:
