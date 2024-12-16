@@ -18,6 +18,7 @@ def decrypt_password(encrypted_password, key):
     return decrypted_password
 
 def password_management():
+    print("\nMenu Encriptación: ")
     # Solicitar la contraseña al usuario
     password = input("\nIngrese la contraseña que desea encriptar (Poner 'salir' para volver al menu): ")
 

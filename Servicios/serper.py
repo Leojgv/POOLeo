@@ -4,6 +4,8 @@ import Auxiliares.constantes
 
 url = Auxiliares.constantes.URL_SERPER
 def menu_serper():
+    print("""\n-----------------------------------------------
+Menu Serper: """)
     # Solicitar al usuario que ingrese la query
     query = input("Ingrese la query de búsqueda: ")
 
@@ -24,5 +26,7 @@ def menu_serper():
             print(f"Título: {result['title']}")
             print(f"URL: {result['link']}")
             print(f"Descripción: {result['snippet']}\n")
+        print("\nBusqueda Completada... ")
+        print("-----------------------------------------------")
     else:
         print(f"Error: {response.status_code} - {response.text}")

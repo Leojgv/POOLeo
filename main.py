@@ -7,13 +7,13 @@ import Servicios.serper
 def menu_json():
     """Menú interactivo para utilizar las funciones en jsonplaceholder"""
     while True:
-        print(""" 
+        print("""-----------------------------------------------
 Menú JsonPlaceholder:
 1. Consultar Datos de Usuario
 2. Consultar Post
 3. Consultar Tarea
-0. Salir de este menú
-""")
+0. VOLVER AL MENU PRINCIPAL 
+-----------------------------------------------""")
         try: 
             option = int(input("Ingrese una opción: "))
         except ValueError:
@@ -60,7 +60,7 @@ Menú JsonPlaceholder:
 def menu_db():
     """Menú interacctivo para utilizar las funciones de la DB"""
     while True:
-        print("""
+        print("""-----------------------------------------------
 Menú Base de Datos:
 1. Mostrar Usuarios
 2. Mostrar Posts
@@ -68,8 +68,8 @@ Menú Base de Datos:
 4. Asignar Post a un Usuario
 5. Asignar Tarea a un Usuario
 6. Desencriptar Contraseña
-0. Salir de este menú
-""")
+0. VOLVER AL MENU PRINCIPAL
+-----------------------------------------------""")
         try:
             option = int(input("Ingrese una opción: "))
         except ValueError:
@@ -106,13 +106,14 @@ Menú Base de Datos:
 #Menu Principal 
 if __name__ == "__main__":
     while True:
-        print("""
+        print("""-----------------------------------------------
 Menú Principal:
 1. Menú JsonPlaceholder.
 2. Menú Base de Datos.
 3. Menú Encriptación.
 4. Menú Serper.
-0. Salir""")
+0. SALIR DEL PROGRAMA
+-----------------------------------------------""")
         option = int(input("Ingrese una opción: "))
         if option == 1:
             menu_json()
