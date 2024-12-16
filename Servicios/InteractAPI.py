@@ -1,7 +1,7 @@
 import requests
-from Negocio.Negocio_post import Post
-from Negocio.Negocio_user import User
-from Negocio.Negocio_todo import Todo
+from Modelos.post import Post
+from Modelos.user import User
+from Modelos.toDos import Todo
 import Auxiliares.constantes 
 
 # Mostrar post
