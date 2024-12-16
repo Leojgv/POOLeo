@@ -1,6 +1,7 @@
 import requests
 import json
 import Auxiliares.constantes
+import Datos.conexion_db
 
 url = Auxiliares.constantes.URL_SERPER
 def menu_serper():
@@ -22,10 +23,12 @@ Menu Serper: """)
     if response.status_code == 200:
         results = response.json()
         print("Resultados de la búsqueda:")
+        search_id = Datos.conexion_db.guardar_busqueda(query)
         for result in results.get('organic', []):
             print(f"Título: {result['title']}")
             print(f"URL: {result['link']}")
             print(f"Descripción: {result['snippet']}\n")
+            Datos.conexion_db.guardar_resultado(search_id, result['title'], result['link'], result['snippet'])
         print("\nBusqueda Completada... ")
         print("-----------------------------------------------")
     else:
