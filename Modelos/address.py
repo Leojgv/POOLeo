@@ -1,6 +1,8 @@
-class Address():
+from Modelos.user import User
+
+class Address(User):
     def __init__(self, id_addreses, street, suite, city, zip_code, lat, lng, userId):
-        self.userId = userId
+        super().__init__(userId)
         self.id_address = id_addreses
         self.street = street
         self.suite = suite
